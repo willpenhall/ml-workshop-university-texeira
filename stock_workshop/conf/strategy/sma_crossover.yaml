@@ -1,0 +1,4 @@
+# conf/strategy/sma_crossover.yaml
+name: sma_crossover
+fast_window: 10
+slow_window: 30

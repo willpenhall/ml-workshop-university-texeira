@@ -1,0 +1,17 @@
+market:
+  ticker: TSLA
+  start_price: 240.0
+  annual_drift: 0.12
+  annual_vol: 0.55
+  days: 252
+  seed: 42
+strategy:
+  name: sma_crossover
+  fast_window: 5
+  slow_window: 30
+backtest:
+  initial_cash: 10000.0
+  commission: 0.001
+  metrics:
+  - total_return
+  - max_drawdown

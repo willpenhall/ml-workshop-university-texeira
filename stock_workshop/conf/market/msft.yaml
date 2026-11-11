@@ -1,0 +1,7 @@
+# conf/market/msft.yaml  (same keys)
+ticker: MSFT
+start_price: 400.0
+annual_drift: 0.10
+annual_vol: 0.22
+days: 252
+seed: 42

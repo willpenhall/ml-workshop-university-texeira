@@ -1,0 +1,6 @@
+# conf/backtest/default.yaml
+initial_cash: 10000.0
+commission: 0.001
+metrics:
+  - total_return
+  - max_drawdown

@@ -1,0 +1,17 @@
+market:
+  ticker: AAPL
+  start_price: 180.0
+  annual_drift: 0.08
+  annual_vol: 0.25
+  days: 252
+  seed: 42
+strategy:
+  name: sma_crossover
+  fast_window: 10
+  slow_window: 30
+backtest:
+  initial_cash: 10000.0
+  commission: 0.001
+  metrics:
+  - total_return
+  - max_drawdown

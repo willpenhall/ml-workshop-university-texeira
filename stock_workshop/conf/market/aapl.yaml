@@ -1,0 +1,7 @@
+# conf/market/aapl.yaml
+ticker: AAPL
+start_price: 180.0
+annual_drift: 0.08
+annual_vol: 0.25
+days: 252
+seed: 42

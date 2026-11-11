@@ -1,0 +1,5 @@
+defaults:
+  - market: aapl
+  - strategy: sma_crossover
+  - backtest: default
+  - _self_
