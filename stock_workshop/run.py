@@ -3,6 +3,10 @@ from omegaconf import DictConfig, OmegaConf
 
 from engine import METRICS, run_backtest, simulate_prices
 
+# Custom resolver: lets a config call Python, e.g. slow_window: ${mul:${.fast_window},3}
+# Registered before @hydra.main so every YAML file in conf/ can use it.
+OmegaConf.register_new_resolver("mul", lambda a, b: a * b)
+
 
 @hydra.main(version_base=None, config_path="conf", config_name="config")
 def main(cfg: DictConfig) -> None:

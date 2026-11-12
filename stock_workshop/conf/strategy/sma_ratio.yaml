@@ -1,0 +1,6 @@
+# conf/strategy/sma_ratio.yaml
+# slow_window is computed by the "mul" resolver registered in run.py
+name: sma_ratio
+fast_window: 10
+ratio: 3
+slow_window: ${mul:${.fast_window},${.ratio}}
