@@ -22,11 +22,13 @@ def sma(prices, window, i):
 
 def run_backtest(prices, fast_window, slow_window, initial_cash, commission):
     """Moving-average crossover: all in when fast > slow, all cash when fast < slow."""
-    cash, shares = float(initial_cash), 0.0
+    cash = float(initial_cash)
+    shares = 0.0
     equity_curve = []
     for i, price in enumerate(prices):
         if i >= slow_window - 1:
-            fast, slow = sma(prices, fast_window, i), sma(prices, slow_window, i)
+            fast = sma(prices, fast_window, i)
+            slow = sma(prices, slow_window, i)
             if fast > slow and shares == 0:
                 shares = cash * (1 - commission) / price
                 cash = 0.0
@@ -42,7 +44,8 @@ def total_return(equity_curve):
 
 
 def max_drawdown(equity_curve):
-    peak, worst = equity_curve[0], 0.0
+    peak = equity_curve[0]
+    worse = 0.0
     for value in equity_curve:
         peak = max(peak, value)
         worst = min(worst, value / peak - 1)
