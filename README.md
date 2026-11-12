@@ -1,6 +1,16 @@
 # ml-workshop-university-texeira
 Workshop for EGR 444 - OmegaConf / Hydra - University Texeira
 
+# Run in Google Colab (no install needed)
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/willpenhall/ml-workshop-university-texeira/blob/main/stock_workshop/workshop_colab.ipynb)
+
+Open the notebook and run the cells in section 0 first (or Runtime → Run all). It installs omegaconf and hydra-core and writes every config file, `engine.py` and `run.py` into Colab, so nothing needs to be uploaded.
+
+`workshop_colab.ipynb` is generated from the repo files. After editing anything in `conf/`, `engine.py`, `run.py` or `workshop.ipynb`, regenerate it from inside `stock_workshop`:
+```
+python build_colab.py
+```
+
 # Open venv
 py -3.12 -m venv .venv \
 .venv\Scripts\Activate.ps1
