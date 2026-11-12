@@ -45,7 +45,7 @@ def total_return(equity_curve):
 
 def max_drawdown(equity_curve):
     peak = equity_curve[0]
-    worse = 0.0
+    worst = 0.0
     for value in equity_curve:
         peak = max(peak, value)
         worst = min(worst, value / peak - 1)
