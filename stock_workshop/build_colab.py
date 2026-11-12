@@ -25,6 +25,7 @@ WORKSPACE_FILES = [
     "conf/market/msft.yaml",
     "conf/market/tsla.yaml",
     "conf/strategy/sma_crossover.yaml",
+    "conf/strategy/sma_ratio.yaml",
     "conf/backtest/default.yaml",
     "engine.py",
     "run.py",
@@ -105,9 +106,13 @@ for cell in nb["cells"]:
     elif "# Break it on purpose" in src:      # each deliberate error gets its own cell
         body, _, breaks = src.partition("# Break it on purpose")
         add("code", body)
-        header = "# Break it on purpose" + breaks.splitlines()[0]
-        for i, line in enumerate(l for l in breaks.splitlines()[1:] if l.strip()):
-            add("code", (header + "\n" if i == 0 else "") + line, tags=["raises-exception"])
+        # Wrapped in try/except so Runtime -> Run all prints the error and keeps going
+        # (Colab stops "Run all" at the first uncaught exception).
+        add("markdown", "The next two cells fail on purpose. Each one prints the error OmegaConf raises instead of stopping the notebook.")
+        for line in (l for l in breaks.splitlines()[1:] if l.strip()):
+            code, _, note = line.partition("#")
+            add("code", f"# {note.strip()}\ntry:\n    {code.strip()}\n"
+                        "except Exception as err:\n    print(f\"{type(err).__name__}: {err}\")")
     else:
         add("code", src)
 
